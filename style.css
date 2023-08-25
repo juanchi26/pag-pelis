@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap');
+
+body {
+    font-family: "Rubik";
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+}
+.card{
+    
+    border-radius: 30px;
+    margin: 0.40rem;
+    cursor: pointer;
+    
+}
+
+#peliculas {
+    margin-top: 2rem;
+}
+
+#peliculas  img  {
+    border-radius: 20px;
+    transition: .3s;
+}
+
+#peliculas img:hover {
+    transform: scale(1.07);
+}
+
+#repro{
+    height: 700px;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+header > nav > div > a {
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    transition: .3s;
+}
+header > nav > div > a:hover {
+    transform: scale(1.10);
+}
