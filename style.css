@@ -60,7 +60,7 @@ header > nav > div > a:hover {
     top: 0;
     left: 0;
     position: absolute;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -78,4 +78,9 @@ header > nav > div > a:hover {
 
 .contenido h6 {
     font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.contenido p {
+    margin-top: 10px;
 }
