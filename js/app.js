@@ -24,26 +24,8 @@ async function peticion(url, options) {
 
 
 
-
-
-peticion(popular_movie, options).then(movies => {
-  movies.results.forEach(movie => {
-    peliculas.innerHTML += `
-    <div class="col">
-          <a class="card mt-3" style="width: 12rem;"">
-          <div>
-          <img src="https://image.tmdb.org/t/p/original/${movie.poster_path}" class="card-img-top"  onclick="redirect(${movie.id})" alt="Poster de la pelicula">
-          </div>
-        </a>
-      </div>`
-  });
-
-})
-
-
-boton.addEventListener("click", () => {
-  peticion(`https://api.themoviedb.org/3/search/movie?query=${buscador.value}&include_adult=false&language=es-MX&page=1`, options).then(movies => {
-    peliculas.innerHTML = ""
+document.addEventListener("DOMContentLoaded", () => {
+  peticion(popular_movie, options).then(movies => {
     movies.results.forEach(movie => {
       peliculas.innerHTML += `
       <div class="col">
@@ -53,32 +35,14 @@ boton.addEventListener("click", () => {
             </div>
           </a>
         </div>`
-    })
-  })
-})
-
-inicio.addEventListener("click", () => {
-    peticion(popular_movie, options).then(movies => {
-      peliculas.innerHTML = ""
-      movies.results.forEach(movie => {
-        peliculas.innerHTML += `
-        <div class="col">
-              <a class="card mt-3" style="width: 12rem;"">
-              <div>
-              <img src="https://image.tmdb.org/t/p/original/${movie.poster_path}" class="card-img-top"  onclick="redirect(${movie.id})" alt="Poster de la pelicula">
-              </div>
-            </a>
-          </div>`
-      });
-    })
-})
-
-
-
-mostrar_mas.addEventListener("click", () => {
+    });
   
-  let url_paginacion = `https://api.themoviedb.org/3/movie/popular?api_key=fff89553e9929092089d06842e9cb52e&language=es-MX&page=${contador}`
-    peticion(url_paginacion, options).then(movies => {
+  })
+  
+  
+  boton.addEventListener("click", () => {
+    peticion(`https://api.themoviedb.org/3/search/movie?query=${buscador.value}&include_adult=false&language=es-MX&page=1`, options).then(movies => {
+      peliculas.innerHTML = ""
       movies.results.forEach(movie => {
         peliculas.innerHTML += `
         <div class="col">
@@ -90,9 +54,47 @@ mostrar_mas.addEventListener("click", () => {
           </div>`
       })
     })
-    contador += 1
+  })
   
+  inicio.addEventListener("click", () => {
+      peticion(popular_movie, options).then(movies => {
+        peliculas.innerHTML = ""
+        movies.results.forEach(movie => {
+          peliculas.innerHTML += `
+          <div class="col">
+                <a class="card mt-3" style="width: 12rem;"">
+                <div>
+                <img src="https://image.tmdb.org/t/p/original/${movie.poster_path}" class="card-img-top"  onclick="redirect(${movie.id})" alt="Poster de la pelicula">
+                </div>
+              </a>
+            </div>`
+        });
+      })
+  })
+  
+  
+  
+  mostrar_mas.addEventListener("click", () => {
+    
+    let url_paginacion = `https://api.themoviedb.org/3/movie/popular?api_key=fff89553e9929092089d06842e9cb52e&language=es-MX&page=${contador}`
+      peticion(url_paginacion, options).then(movies => {
+        movies.results.forEach(movie => {
+          peliculas.innerHTML += `
+          <div class="col">
+                <a class="card mt-3" style="width: 12rem;"">
+                <div>
+                <img src="https://image.tmdb.org/t/p/original/${movie.poster_path}" class="card-img-top"  onclick="redirect(${movie.id})" alt="Poster de la pelicula">
+                </div>
+              </a>
+            </div>`
+        })
+      })
+      contador += 1
+    
+  })
 })
+
+
 
 
 

@@ -17,6 +17,7 @@ const options = {
   .then(res => res.json())
   .then(movie => {
     titulo.innerHTML = movie.title
+    document.title = movie.title
     console.log(movie)
     pelicula.innerHTML = 
             `<div class="card mb-3 d-flex" style="max-width: 2000px; ">
@@ -33,7 +34,7 @@ const options = {
               </div>
             </div>
           </div>
-          <iframe id="repro" allowfullscreen="true" src="https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1"></iframe>
+          <iframe id="repro" allowfullscreen="true" scrolling = "no" src="https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1"></iframe>
           `
   })
 

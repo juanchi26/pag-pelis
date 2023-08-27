@@ -1,8 +1,9 @@
 const estrenos = document.getElementById("estrenos");
 const boton = document.getElementById("boton");
 const buscador = document.getElementById("input");
-const estrenos_movies = `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1`
-
+const cargar_mas = document.getElementById("cargar")
+const estrenos_movies = `https://api.themoviedb.org/3/movie/upcoming?language=es-MX&page=1`
+let contador = 2
 function redirect(id){
     localStorage.setItem("id", id)
     window.location = "peliculas.html"
@@ -27,8 +28,7 @@ function redirect(id){
   
   
   
-  
-  
+
   peticion(estrenos_movies, options).then(movies => {
     console.log(movies.results)
     movies.results.forEach(movie => {
@@ -59,3 +59,28 @@ function redirect(id){
       })
     })
   })
+
+
+cargar_mas.addEventListener("click", () => {
+  let url_paginacion = `https://api.themoviedb.org/3/movie/upcoming?language=es-MX&page=${contador}`
+      peticion(url_paginacion, options).then(movies => {
+        movies.results.forEach(movie => {
+          peliculas.innerHTML += `
+          <div class="col">
+                <a class="card mt-3" style="width: 12rem;"">
+                <div>
+                <img src="https://image.tmdb.org/t/p/original/${movie.poster_path}" class="card-img-top"  onclick="redirect(${movie.id})" alt="Poster de la pelicula">
+                </div>
+              </a>
+            </div>`
+        })
+      })
+      contador += 1
+})
+
+
+
+
+ 
+  
+  
